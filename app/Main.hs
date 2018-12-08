@@ -4,6 +4,9 @@ module Main where
 
 import Stroots.Nat
 
+import Stroots.Fin (Fin(..))
+import qualified Stroots.Fin as F
+
 import Stroots.HList (HList(..))
 import qualified Stroots.HList as HL
 
@@ -26,10 +29,10 @@ v2 :: Vector ('S ('S ('S 'Z))) Int
 v2 = 6:-7:-8:- V.empty
 
 v3 :: List Int
-v3 = 1:>2:>3:> L.empty
+v3 = 1:|2:|3:| L.empty
 
 v4 :: List Int
-v4 = 6:>7:>8:> L.empty
+v4 = 6:|7:|8:| L.empty
 
 hlist :: HList '[Int, Char, [Int], Vector ('S ('S ('S 'Z))) Int]
 hlist = 1 ::: 'e' ::: [1,2,3] ::: (6 :- 7 :- 8 :- V.empty) ::: HNil
