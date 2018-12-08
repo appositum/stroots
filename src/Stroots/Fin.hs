@@ -9,7 +9,7 @@ import Data.Kind
 import Stroots.Nat
 
 data Fin :: Nat -> Type where
-  FZ :: Fin (S n)
-  FS :: Fin n -> Fin (S n)
+  FZ :: Fin ('S n)
+  FS :: Fin n -> Fin ('S n)
 
 deriving instance Show (Fin n)
