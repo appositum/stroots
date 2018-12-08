@@ -1,6 +1,3 @@
-{-# LANGUAGE TypeFamilies  #-}
-{-# LANGUAGE TypeOperators #-}
-
 module Stroots.Nat where
 
 data Nat = Z | S Nat deriving Eq

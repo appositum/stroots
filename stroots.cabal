@@ -29,8 +29,15 @@ library
       Paths_stroots
   default-extensions:
       DataKinds
+      FlexibleContexts
+      FlexibleInstances
       GADTs
       InstanceSigs
+      KindSignatures
+      StandaloneDeriving
+      TypeFamilies
+      TypeOperators
+      UndecidableInstances
   hs-source-dirs:
       src
   build-depends:

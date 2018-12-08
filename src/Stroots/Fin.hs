@@ -1,6 +1,3 @@
-{-# LANGUAGE KindSignatures     #-}
-{-# LANGUAGE StandaloneDeriving #-}
-
 module Stroots.Fin
   ( Fin(..)
   ) where
