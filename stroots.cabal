@@ -28,6 +28,7 @@ library
   other-modules:
       Paths_stroots
   default-extensions:
+      GADTs
       InstanceSigs
   hs-source-dirs:
       src
