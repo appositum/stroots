@@ -10,6 +10,7 @@ module Stroots.Vector
   , flatten
   , zip
   , zipWith
+  , Vector(..)
   ) where
 
 import Prelude hiding (zip, zipWith)

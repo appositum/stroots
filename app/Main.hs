@@ -33,4 +33,4 @@ v4 :: List Int
 v4 = 6 :| 7 :| 8 :| Empty
 
 hlist :: HList '[Int, Char, [Int], Vector ('S ('S ('S 'Z))) Int]
-hlist = 1 ::: 'e' ::: [1,2,3] ::: (6 :> 7 :> 8 :> V.empty) ::: HNil
+hlist = 1 ::: 'e' ::: [1,2,3] ::: (6 :> 7 :> 8 :> Nil) ::: HNil
