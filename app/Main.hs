@@ -3,6 +3,10 @@
 module Main where
 
 import Stroots.Nat
+
+import Stroots.HList (HList(..))
+import qualified Stroots.HList as HL
+
 import Stroots.Vector (Vector(..))
 import qualified Stroots.Vector as V
 
@@ -26,3 +30,6 @@ v3 = 1:>2:>3:> L.empty
 
 v4 :: List Int
 v4 = 6:>7:>8:> L.empty
+
+hlist :: HList '[Int, Char, [Int], Vector ('S ('S ('S 'Z))) Int]
+hlist = 1 ::: 'e' ::: [1,2,3] ::: (6 :- 7 :- 8 :- V.empty) ::: HNil
