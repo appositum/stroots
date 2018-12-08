@@ -1,7 +1,6 @@
 {-# LANGUAGE DataKinds          #-}
 {-# LANGUAGE FlexibleContexts   #-}
 {-# LANGUAGE FlexibleInstances  #-}
-{-# LANGUAGE GADTs              #-}
 {-# LANGUAGE KindSignatures     #-}
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE TypeOperators      #-}
