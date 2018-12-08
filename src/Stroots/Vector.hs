@@ -8,6 +8,7 @@
 module Stroots.Vector
   ( append
   , flatten
+  , index
   , zip
   , zipWith
   , Vector(..)
@@ -15,6 +16,7 @@ module Stroots.Vector
 
 import Prelude hiding (zip, zipWith)
 import Data.Kind (Type)
+import Stroots.Fin
 import Stroots.Nat
 
 infixr 5 :>
@@ -81,3 +83,7 @@ diagonal ((x:>xs):>xss) = x :> diagonal (tl <$> xss) where
 
 flatten :: Vector n (Vector n a) -> Vector n a
 flatten = diagonal
+
+index :: Fin n -> Vector n a -> a
+index FZ     (x:>xs) = x
+index (FS n) (x:>xs) = index n xs
