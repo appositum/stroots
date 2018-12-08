@@ -27,10 +27,10 @@ v2 :: Vector ('S ('S ('S 'Z))) Int
 v2 = 6:-7:-8:- V.empty
 
 v3 :: List Int
-v3 = 1:|2:|3:| L.empty
+v3 = 1 :| 2 :| 3 :| Empty
 
 v4 :: List Int
-v4 = 6:|7:|8:| L.empty
+v4 = 6 :| 7 :| 8 :| Empty
 
 hlist :: HList '[Int, Char, [Int], Vector ('S ('S ('S 'Z))) Int]
 hlist = 1 ::: 'e' ::: [1,2,3] ::: (6 :- 7 :- 8 :- V.empty) ::: HNil

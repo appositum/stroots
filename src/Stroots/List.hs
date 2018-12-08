@@ -1,35 +1,35 @@
 {-# LANGUAGE TypeFamilies #-}
 
-module Stroots.List where
+module Stroots.List (List(..)) where
 
 import GHC.Exts (fromList, toList, IsList, Item)
 import Control.Applicative (empty, Alternative, (<|>))
 
 infixr 5 :|
-data List a = Nil
+data List a = Empty
             | a :| List a
             deriving (Eq, Show)
 
 instance Semigroup (List a) where
   (<>) :: List a -> List a -> List a
-  Nil <> ys = ys
+  Empty <> ys = ys
   (x:|xs) <> ys = x :| (xs <> ys)
 
 instance Monoid (List a) where
   mempty :: List a
-  mempty = Nil
+  mempty = Empty
 
 instance Functor List where
   fmap :: (a -> b) -> List a -> List b
-  fmap _ Nil = Nil
+  fmap _ Empty = Empty
   fmap f (x:|xs) = f x :| fmap f xs
 
 instance Applicative List where
   pure :: a -> List a
-  pure a = a :| Nil
+  pure a = a :| Empty
 
   (<*>) :: List (a -> b) -> List a -> List b
-  Nil <*> _ = Nil
+  Empty <*> _ = Empty
   (f:|fs) <*> xs = (f <$> xs) <> (fs <*> xs)
 
 instance Alternative List where
@@ -41,28 +41,25 @@ instance Alternative List where
 
 instance Monad List where
   (>>=) :: List a -> (a -> List b) -> List b
-  Nil >>= _ = Nil
-  xs >>= f = foldr (<>) Nil (f <$> xs)
+  Empty >>= _ = Empty
+  xs >>= f = foldr (<>) Empty (f <$> xs)
 
 instance Foldable List where
   foldr :: (a -> b -> b) -> b -> List a -> b
-  foldr _ z Nil = z
+  foldr _ z Empty = z
   foldr f z (x:|xs) = f x (foldr f z xs)
 
 instance Traversable List where
   sequenceA :: Applicative f => List (f a) -> f (List a)
-  sequenceA Nil = pure Nil
+  sequenceA Empty = pure Empty
   sequenceA (x:|xs) = (:|) <$> x <*> sequenceA xs
 
 instance IsList (List a) where
   type Item (List a) = a
   fromList :: [a] -> List a
-  fromList [] = Nil
+  fromList [] = Empty
   fromList (x:xs) = x :| fromList xs
 
   toList :: List a -> [a]
-  toList Nil = []
+  toList Empty = []
   toList (x:|xs) = x : toList xs
-
-empty :: List a
-empty = Nil
