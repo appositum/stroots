@@ -6,7 +6,7 @@ bug-reports:    https://github.com/appositum/stroots/issues
 author:         appositum
 maintainer:     appositum@protonmail.com
 copyright:      2018 appositum
-license:        BSD3
+license:        Apache-2.0
 license-file:   LICENSE
 build-type:     Simple
 cabal-version:  >= 1.10
