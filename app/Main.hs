@@ -16,7 +16,6 @@ import qualified Stroots.List as L
 
 main :: IO ()
 main = do
-  print $ 5
   print $ V.zip v1 v2
   print $ V.zipWith (+) v1 v2
 
