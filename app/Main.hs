@@ -2,7 +2,6 @@
 
 module Main where
 
-import Control.Applicative (liftA2)
 import Stroots.Nat
 import Stroots.Vector (Vector(..))
 import qualified Stroots.Vector as V
@@ -22,6 +21,8 @@ v1 = 1:-2:-3:- V.empty
 v2 :: Vector ('S ('S ('S 'Z))) Int
 v2 = 6:-7:-8:- V.empty
 
-{-
+v3 :: List Int
 v3 = 1:>2:>3:> L.empty
-v4 = 6:>7:>8:> L.empty-}
+
+v4 :: List Int
+v4 = 6:>7:>8:> L.empty

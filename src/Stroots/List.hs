@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeFamilies #-}
+
 module Stroots.List where
 
 import GHC.Exts (fromList, toList, IsList, Item)
