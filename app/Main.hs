@@ -1,5 +1,3 @@
-{-# LANGUAGE DataKinds #-}
-
 module Main where
 
 import Stroots.Nat

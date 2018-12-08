@@ -1,4 +1,3 @@
-{-# LANGUAGE DataKinds     #-}
 {-# LANGUAGE TypeFamilies  #-}
 {-# LANGUAGE TypeOperators #-}
 
