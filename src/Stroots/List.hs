@@ -1,21 +1,14 @@
-{-# LANGUAGE GADTs              #-}
-{-# LANGUAGE KindSignatures     #-}
-{-# LANGUAGE StandaloneDeriving #-}
-{-# LANGUAGE TypeFamilies       #-}
+{-# LANGUAGE TypeFamilies #-}
 
 module Stroots.List where
 
-import Data.Kind (Type)
 import GHC.Exts (fromList, toList, IsList, Item)
 import Control.Applicative (empty, Alternative, (<|>))
 
 infixr 5 :|
-data List :: Type -> Type where
-  Nil  :: List a
-  (:|) :: a -> List a -> List a
-
-deriving instance Eq a => Eq (List a)
-deriving instance Show a => Show (List a)
+data List a = Nil
+            | a :| List a
+            deriving (Eq, Show)
 
 instance Semigroup (List a) where
   (<>) :: List a -> List a -> List a
