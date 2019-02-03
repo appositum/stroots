@@ -5,9 +5,11 @@ module Stroots.Vector
   , zip
   , zipWith
   , Vector(..)
+  , head
+  , tail
   ) where
 
-import Prelude hiding (zip, zipWith)
+import Prelude hiding (zip, zipWith, head, tail)
 import Data.Kind (Type)
 import Stroots.Fin
 import Stroots.Nat
@@ -17,7 +19,15 @@ data Vector :: Nat -> Type -> Type where
   Nil  :: Vector 'Z a
   (:>) :: a -> Vector n a -> Vector ('S n) a
 
-deriving instance Show a => Show (Vector n a)
+instance Show a => Show (Vector n a) where
+  show :: Show a => Vector n a -> String
+  show xs = "[" ++ show' xs ++ "]" where
+    show' :: Show a => Vector n a -> String
+    show' Nil = ""
+    show' (x:>xs) =
+      case xs of
+        Nil -> show x
+        _ -> show x ++ ", " ++ show' xs
 
 instance Functor (Vector n) where
   fmap :: (a -> b) -> Vector n a -> Vector n b
@@ -80,3 +90,9 @@ flatten = diagonal
 index :: Fin n -> Vector n a -> a
 index FZ     (x:>xs) = x
 index (FS n) (x:>xs) = index n xs
+
+head :: Vector (S n) a -> a
+head (x:>_) = x
+
+tail :: Vector (S n) a -> Vector n a
+tail (_:>xs) = xs
