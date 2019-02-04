@@ -1,12 +1,11 @@
 module Stroots.Vector
   ( append
-  , flatten
+  , head
   , index
+  , tail
   , zip
   , zipWith
   , Vector(..)
-  , head
-  , tail
   ) where
 
 import Prelude hiding (zip, zipWith, head, tail)
@@ -78,21 +77,16 @@ zip :: Vector n a -> Vector n b -> Vector n (a, b)
 zip Nil Nil = Nil
 zip (x:>xs) (y:>ys) = (x, y) :> zip xs ys
 
+head :: Vector ('S n) a -> a
+head (x:>_) = x
+
+tail :: Vector ('S n) a -> Vector n a
+tail (_:>xs) = xs
+
 diagonal :: Vector n (Vector n a) -> Vector n a
 diagonal Nil = Nil
-diagonal ((x:>xs):>xss) = x :> diagonal (tl <$> xss) where
-  tl :: Vector ('S n) a -> Vector n a
-  tl (_:>xs) = xs
-
-flatten :: Vector n (Vector n a) -> Vector n a
-flatten = diagonal
+diagonal ((x:>xs):>xss) = x :> diagonal (tail <$> xss)
 
 index :: Fin n -> Vector n a -> a
 index FZ     (x:>xs) = x
 index (FS n) (x:>xs) = index n xs
-
-head :: Vector (S n) a -> a
-head (x:>_) = x
-
-tail :: Vector (S n) a -> Vector n a
-tail (_:>xs) = xs
