@@ -2,13 +2,14 @@ module Stroots.Vector
   ( append
   , head
   , index
+  , replicate
   , tail
   , zip
   , zipWith
   , Vector(..)
   ) where
 
-import Prelude hiding (zip, zipWith, head, tail)
+import Prelude hiding (zip, zipWith, head, tail, replicate)
 import Data.Kind (Type)
 import Stroots.Fin
 import Stroots.Nat
@@ -90,3 +91,7 @@ diagonal ((x:>xs):>xss) = x :> diagonal (tail <$> xss)
 index :: Fin n -> Vector n a -> a
 index FZ     (x:>xs) = x
 index (FS n) (x:>xs) = index n xs
+
+replicate :: SNat n -> a -> Vector n a
+replicate SZ _ = Nil
+replicate (SS n) a = a :> replicate n a
