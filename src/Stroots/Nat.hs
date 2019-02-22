@@ -1,5 +1,7 @@
 module Stroots.Nat where
 
+import Data.Kind (Type)
+
 data Nat = Z | S Nat deriving Eq
 
 instance Show Nat where
@@ -9,6 +11,12 @@ instance Show Nat where
 type family a + b where
   'Z + n = n
   'S n + m = 'S (n + m)
+
+data SNat :: Nat -> Type where
+  SZ :: SNat 'Z
+  SS :: SNat n -> SNat ('S n)
+
+deriving instance Show (SNat n)
 
 fromNat :: Integral a => Nat -> a
 fromNat Z = 0
