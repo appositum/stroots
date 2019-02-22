@@ -1,18 +1,7 @@
 module Main where
 
-import Stroots.Nat
-
-import Stroots.Fin (Fin(..))
-import qualified Stroots.Fin as F
-
-import Stroots.HList (HList(..))
-import qualified Stroots.HList as HL
-
-import Stroots.Vector (Vector(..))
+import Stroots
 import qualified Stroots.Vector as V
-
-import Stroots.List (List(..))
-import qualified Stroots.List as L
 
 main :: IO ()
 main = do
